@@ -4,7 +4,19 @@ pipeline{
         stage('Python file'){
             steps{
                 echo 'file working'
+                sh 'python test.py'
             }
+        }
+    }
+    post{
+        always{
+            echo "it run always"
+        }
+        success{
+            echo "successfull code"
+        }
+        failure{
+            echo "failiure done"
         }
     }
 }
