@@ -14,20 +14,10 @@ pipeline{
         }
         success{
             echo "successfull code"
-            setBuildStatus("Build succeeded", "SUCCESS");
-        }
+            bat ''' a=git rev-parse --short HEAD ;curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token <TOKEN>" https://api.github.com/repos/OWNER/REPO/statuses/$a -d '{"state":"success","target_url":"https://4efe-223-233-72-83.in.ngrok.io/job/test-3/$BUILD_NUMBER/console","description":"The build succeeded!","context":"continuous-integration/jenkins"}' '
+        }'''
         failure{
             echo "failiure done"
-            setBuildStatus("Build failed", "Failure");
         }
     }
-}
-void setBuildStatus(String message, String state) {
-  step([
-      $class: "GitHubCommitStatusSetter",
-      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/Mohit04tomar/test"],
-      contextSource: [$class: "ManuallyEnteredCommitContextSource", context: "ci/jenkins/build-status"],
-      errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
-      statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
-  ]);
 }
