@@ -14,11 +14,9 @@ pipeline{
         }
         success{
             echo "successfull code"
-            bat """
-            curl --header 'Authorization: Token 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' "https://api.GitHub.com/repos/Mohit04tomar/test/statuses/$GIT_COMMIT" \
-            -H "Content-Type: application/json" \
-            -X POST \
-            -d "{\"state\": \"success\",\"context\": \"continuous-integration/jenkins\", \"description\": \"Jenkins\", \"target_url\": \"https://4efe-223-233-72-83.in.ngrok.io/job/test-3/$BUILD_NUMBER/console\"}"
+            bat """a=`git rev-parse HEAD`
+            curl -X POST -H "Content-Type: application/json" -H 'Authorization: Token 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' "https://api.GitHub.com/repos/Mohit04tomar/test/statuses/$a" \
+            -d '{"state": "success", "context": "continuous-integration/jenkins", "description": "Build Succeeded", "target_url": "https://4efe-223-233-72-83.in.ngrok.io/job/test-3/$BUILD_NUMBER/console\"}"
             """
         }
         failure{
