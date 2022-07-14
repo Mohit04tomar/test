@@ -15,7 +15,8 @@ pipeline{
         }
         success{
             echo "successfull code"
-            bat ''' a=`git rev-parse --short HEAD` ;curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token <TOKEN>" https://api.github.com/repos/OWNER/REPO/statuses/%a% -d '{"state":"success","target_url":"https://4efe-223-233-72-83.in.ngrok.io/job/test-3/$BUILD_NUMBER/console","description":"The build succeeded!","context":"continuous-integration/jenkins"}' '
+            bat ''' SET a=`git rev-parse --short HEAD` 
+            curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token <TOKEN>" https://api.github.com/repos/OWNER/REPO/statuses/%a% -d '{"state":"success","target_url":"https://4efe-223-233-72-83.in.ngrok.io/job/test-3/$BUILD_NUMBER/console","description":"The build succeeded!","context":"continuous-integration/jenkins"}' '
         '''
         }
         failure{
