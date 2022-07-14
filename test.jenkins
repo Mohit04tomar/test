@@ -14,9 +14,11 @@ pipeline{
         }
         success{
             echo "successfull code"
+            setBuildStatus("Build succeeded", "SUCCESS");
         }
         failure{
             echo "failiure done"
+            setBuildStatus("Build succeeded", "Failure");
         }
     }
 }
