@@ -5,7 +5,7 @@ pipeline{
             steps{
                 echo 'file working'
                 bat 'python test.py;'
-                bat 'sh -x test.sh'
+                bat 'test.sh'
             }
         }
     }

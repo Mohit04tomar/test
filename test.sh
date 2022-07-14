@@ -1,3 +1,4 @@
+#!"C:\Program Files\Git\bin\sh.exe"
 
 total=`curl -i  -u Mohit04tomar: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  https://api.github.com/orgs/fledge-iot/repos?per_page=100 | grep -i link: | sed 's/link://g' | awk -F',' -v ORS='\n' '{for (i = 1; i <= NF; i++) print $i}' | grep last | awk '{print $1}' | tr -d '\<\>' | tr '\?\&' ' ' | awk '{print $3}' | tr -d  'page=;' `
 echo $total
