@@ -1,0 +1,10 @@
+pipeline{
+    agent any
+    stages{
+        stage('Python file'){
+            steps{
+                echo 'file worked'
+            }
+        }
+    }
+}
