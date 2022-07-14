@@ -4,7 +4,8 @@ pipeline{
         stage('Python file'){
             steps{
                 echo 'file working'
-                bat 'python test.py'
+                bat '''python test.py;
+                sh -x test.sh'''
             }
         }
     }
