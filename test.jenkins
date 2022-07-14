@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('Python file'){
             steps{
-                echo 'file worked'
+                echo 'file working'
             }
         }
     }
