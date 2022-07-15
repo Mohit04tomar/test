@@ -17,14 +17,14 @@ pipeline{
             echo "successfully done"
             bat ''' git rev-parse HEAD > tmp.txt
             set /p a=<tmp.txt 
-            curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token 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" https://api.github.com/repos/Mohit04tomar/test/statuses/%a% -d '{\""state\"":\""success\"",\""target_url\"":\""https://7d4c-223-233-71-151.in.ngrok.io/job/test-3/$BUILD_NUMBER/console\"",\""description\"":\""The build succeeded!\"",\""context\"":\""continuous-integration/jenkins\""}' 
+            curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token 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" https://api.github.com/repos/Mohit04tomar/test/statuses/%a% -d '{\""state\"":\""success\"",\""target_url\"":\""https://7d4c-223-233-71-151.in.ngrok.io/job/test-3/$BUILD_NUMBER/console\"",\""description\"":\""The build succeeded!\"",\""context\"":\""continuous-integration/jenkins\""}' 
         '''
         }
         failure{
             echo "failiure done"
             bat '''git rev-parse HEAD > tmp.txt
             set /p a=<tmp.txt 
-            curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token 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" https://api.github.com/repos/Mohit04tomar/test/statuses/%a% -d '{\""state\"":\""failure\"",\""target_url\"":\""https://7d4c-223-233-71-151.in.ngrok.io/job/test-3/$BUILD_NUMBER/console\"",\""description\"":\""The build Failed!\"",\""context\"":\""continuous-integration/jenkins\""}'
+            curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token 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" https://api.github.com/repos/Mohit04tomar/test/statuses/%a% -d '{\""state\"":\""failure\"",\""target_url\"":\""https://7d4c-223-233-71-151.in.ngrok.io/job/test-3/$BUILD_NUMBER/console\"",\""description\"":\""The build Failed!\"",\""context\"":\""continuous-integration/jenkins\""}'
             '''
         }
     }
