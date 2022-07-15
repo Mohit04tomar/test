@@ -14,7 +14,7 @@ pipeline{
             echo "it run always"
         }
         success{
-            echo "successfull code work"
+            echo "successfully done"
             bat ''' git rev-parse --short HEAD > tmp.txt
             set /p a=<tmp.txt 
             curl -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token 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" https://api.github.com/repos/Mohit04tomar/test/statuses/%a% -d '{\""state\"":\""success\"",\""target_url\"":\""https://7d4c-223-233-71-151.in.ngrok.io/job/test-3/$BUILD_NUMBER/console\"",\""description\"":\""The build succeeded!\"",\""context\"":\""continuous-integration/jenkins\""}' 
